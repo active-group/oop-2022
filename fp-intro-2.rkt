@@ -10,10 +10,46 @@
   make-dillo
   (dillo-alive? boolean)
   (dillo-weight number))
+; representation of the state of an armadillo *at a certain time*
+
+(: make-dillo (boolean number -> dillo))
+(: dillo-alive? (dillo -> boolean))
+(: dillo-weight (dillo -> number))
 
 ; live armadillo, weighs 10kg
 (define dillo1 (make-dillo #t 10))
 ; dead armadillo, 8kg
 (define dillo2 (make-dillo #f 8))
+
+#|
+class Dillo {
+  boolean isAlive;
+  double weight;
+
+  void runOver() {
+    this.isAlive = false;
+  }
+}
+|#
+
+; run over an armadillo
+(: run-over-dillo (dillo -> dillo))
+
+(check-expect (run-over-dillo dillo1)
+              (make-dillo #f 10))
+(check-expect (run-over-dillo dillo2)
+              dillo2)
+
+; template
+#;(define run-over-dillo
+  (lambda (dillo)
+    (make-dillo ... ...)
+    ... (dillo-alive? dillo) ... (dillo-weight dillo) ...))
+
+
+(define run-over-dillo
+  (lambda (dillo)
+    (make-dillo #f (dillo-weight dillo))))
+
 
 
