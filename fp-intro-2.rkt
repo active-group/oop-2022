@@ -178,3 +178,40 @@ class Rattlesnake implements Animal {
   cons?
   (first number)
   (rest list-of-numbers))
+
+; 1-element list: 7
+(define list1 (cons 7 empty))
+; 2-element list: 7 5
+(define list2 (cons 7 (cons 5 empty)))
+; 3-element list: 7 3 9
+(define list3 (cons 7 (cons 3 (cons 9 empty))))
+; 4-element list: 5 7 3 9
+(define list4 (cons 5 list3))
+
+; add all the numbers in a list
+(: list-sum (list-of-numbers -> number))
+
+(check-expect (list-sum list4)
+              24)
+
+(define list-sum
+  (lambda (list)
+    (cond
+      ((empty? list) 0) ; neutral element / identity -> algebra
+      ((cons? list)
+       (+ (first list)
+          (list-sum (rest list)))))))
+
+; multiply all the numbers in a list
+(: list-product (list-of-numbers -> number))
+
+(check-expect (list-product list3)
+              189)
+
+(define list-product
+  (lambda (list)
+    (cond
+      ((empty? list) 1)
+      ((cons? list)
+       (* (first list)
+          (list-product (rest list)))))))
