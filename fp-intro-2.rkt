@@ -51,5 +51,20 @@ class Dillo {
   (lambda (dillo)
     (make-dillo #f (dillo-weight dillo))))
 
+; feed an armadillo, live armadillos gain weight, dead ones don't
+(: feed-dillo (dillo number -> dillo))
+
+(check-expect (feed-dillo dillo1 5)
+              (make-dillo #t 15))
+(check-expect (feed-dillo dillo2 5)
+              dillo2)
+
+(define feed-dillo
+  (lambda (dillo amount)
+    (make-dillo (dillo-alive? dillo)
+                (cond
+                  ((dillo-alive? dillo)
+                   (+ (dillo-weight dillo) mount)) ; live 
+                  (else (dillo-weight dillo)))))) ; dead
 
 
