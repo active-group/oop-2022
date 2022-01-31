@@ -104,3 +104,13 @@ class C {
       ((string=? pet "dog") #t)
       ((string=? pet "cat") #t)
       ((string=? pet "snake") #f))))
+
+; Time consists of / has the following properties:
+; - hour - AND -
+; - minute
+; compound data
+(define-record time
+  make-time
+  (time-hour (integer-from-to 0 23))
+  (time-minute (integer-from-to 0 59)))
+
