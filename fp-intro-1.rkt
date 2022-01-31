@@ -110,7 +110,11 @@ class C {
 ; - minute
 ; compound data
 (define-record time
-  make-time
+  make-time ; constructor
   (time-hour (integer-from-to 0 23))
   (time-minute (integer-from-to 0 59)))
 
+(: make-time ((integer-from-to 0 23) (integer-from-to 0 59) -> time))
+
+
+(define time1 (make-time 12 24))
