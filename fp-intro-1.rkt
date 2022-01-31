@@ -75,3 +75,32 @@ class C {
 (define pet
   (signature (enum "dog" "cat" "snake")))
 
+; Is a pet cute?
+; "isCute"
+(: cute? (pet -> boolean))
+
+(check-expect (cute? "dog") #t)
+(check-expect (cute? "cat") #t)
+(check-expect (cute? "snake") #f)
+
+; skeleton
+#;(define cute?
+  (lambda (pet)
+    ...))
+
+; template
+#;(define cute?
+  (lambda (pet)
+    (cond ; branch, 3 cases
+      ; each branch: (<condition> <result>)
+      ((string=? pet "dog") ...)
+      ((string=? pet "cat") ...)
+      ((string=? pet "snake") ...))))
+
+(define cute?
+  (lambda (pet)
+    (cond ; branch, 3 cases
+      ; each branch: (<condition> <result>)
+      ((string=? pet "dog") #t)
+      ((string=? pet "cat") #t)
+      ((string=? pet "snake") #f))))
