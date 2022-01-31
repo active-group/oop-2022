@@ -215,3 +215,12 @@ class Rattlesnake implements Animal {
       ((cons? list)
        (* (first list)
           (list-product (rest list)))))))
+
+(define list-xxx
+  (lambda (n op list)
+    (cond
+      ((empty? list) n)
+      ((cons? list)
+       (op (first list)
+           (list-xxx n op (rest list)))))))
+
