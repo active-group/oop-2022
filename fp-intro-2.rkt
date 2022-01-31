@@ -178,7 +178,7 @@ class Rattlesnake implements Animal {
   cons
   cons?
   (first element)
-  (rest list-of-numbers))
+  (rest (list-of element)))
 
 ; 1-element list: 7
 (define list1 (cons 7 empty))
@@ -190,7 +190,7 @@ class Rattlesnake implements Animal {
 (define list4 (cons 5 list3))
 
 ; add all the numbers in a list
-(: list-sum (list-of-numbers -> number))
+(: list-sum ((list-of number) -> number))
 
 (check-expect (list-sum list4)
               24)
@@ -204,7 +204,7 @@ class Rattlesnake implements Animal {
           (list-sum (rest list)))))))
 
 ; multiply all the numbers in a list
-(: list-product (list-of-numbers -> number))
+(: list-product ((list-of number) -> number))
 
 (check-expect (list-product list3)
               189)
@@ -227,9 +227,15 @@ class Rattlesnake implements Animal {
        (list-xxx (rest list))
        ...))))
 
+(: highway (list-of animal))
+(define highway (cons dillo1 (cons dillo2 (cons parrot1 (cons parrot2 empty)))))
+
 ; can do the job of any function written using the template
 ; list-fold really is derived systematically from the data definition
 ; ... -> study of folds
+; %a: signature variable / "generic"
+
+(: list-fold (%b (%a %b -> %b) (list-of %a) -> %b))
 
 (define list-fold
   (lambda (n op list)
