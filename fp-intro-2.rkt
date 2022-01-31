@@ -5,6 +5,9 @@
 ; - armadillo - OR -
 ; - parrot
 ; case analysis, NOT enumeration, full data definition for each case
+; here: mixed data
+(define animal
+  (signature (mixed dillo parrot)))
 
 ; Armadillo has the following properties: <- compound data
 ; - alive or dead
