@@ -14,6 +14,7 @@
 ; - weight
 (define-record dillo
   make-dillo
+  dillo? ; predicate
   (dillo-alive? boolean)
   (dillo-weight number))
 ; representation of the state of an armadillo *at a certain time*
@@ -21,6 +22,8 @@
 (: make-dillo (boolean number -> dillo))
 (: dillo-alive? (dillo -> boolean))
 (: dillo-weight (dillo -> number))
+
+(: dillo? (any -> boolean))
 
 ; live armadillo, weighs 10kg
 (define dillo1 (make-dillo #t 10))
@@ -79,6 +82,7 @@ class Dillo {
 ; - weight
 (define-record parrot
   make-parrot
+  parrot?
   (parrot-sentence string)
   (parrot-weight number))
 
@@ -95,6 +99,7 @@ class Dillo {
   (lambda (parrot)
     (make-parrot "" (parrot-weight parrot))))
 
+
 ; run over an animal
 (: run-over-animal (animal -> animal))
 
@@ -103,3 +108,16 @@ class Dillo {
 (check-expect (run-over-animal parrot1)
               (run-over-parrot parrot1))
 
+; template
+#;(define run-over-animal
+  (lambda (animal)
+    (cond
+      ((dillo? animal) ...)
+      ((parrot? animal) ...))))
+
+
+(define run-over-animal
+  (lambda (animal)
+    (cond
+      ((dillo? animal) (run-over-dillo animal))
+      ((parrot? animal) (run-over-parrot animal)))))
