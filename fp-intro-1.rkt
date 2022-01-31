@@ -65,3 +65,13 @@ class C {
 
 |#
 
+; Data analysis
+; A pet is one of the following:
+; - dog - OR - ... represented by "dog"
+; - cat - OR -
+; - snake 
+; ^^^^ case analysis / itemization
+; special case: enumeration
+(define pet
+  (signature (enum "dog" "cat" "snake")))
+
