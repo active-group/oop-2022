@@ -143,3 +143,13 @@ class C {
        (time-minute time))))
 
 ; write a function that takes minutes since midnight and produces a time record
+
+(: msm->time (natural -> time))
+
+(check-expect (msm->time 744)
+              time1)
+
+(define msm->time
+  (lambda (minutes)
+    (make-time (quotient minutes 60)
+               (remainder minutes 60))))
