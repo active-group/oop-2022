@@ -64,7 +64,7 @@ class Dillo {
     (make-dillo (dillo-alive? dillo)
                 (cond
                   ((dillo-alive? dillo)
-                   (+ (dillo-weight dillo) mount)) ; live 
+                   (+ (dillo-weight dillo) amount)) ; live 
                   (else (dillo-weight dillo)))))) ; dead
 
 
