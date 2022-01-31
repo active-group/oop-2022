@@ -148,3 +148,33 @@ class Rattlesnake implements Animal {
 ...
 }
 |#
+
+; "finite sequences" / "lists"
+
+; "list" in FP: specific data structure
+
+; A list is one of the following:
+; - empty list
+; - a cons list, consisting of first element and rest list
+;                                                     ^^^^ self-reference
+
+; self-reference: key to creating flexible data structure, flexible domain models
+(define list-of-numbers
+  (signature (mixed empty-list
+                    cons-list)))
+
+; A empty list ...
+(define-record empty-list
+  make-empty
+  empty?)
+
+(define empty (make-empty))
+
+; A cons list consists of:
+; - first element
+; - rest list
+(define-record cons-list
+  cons
+  cons?
+  (first number)
+  (rest list-of-numbers))
