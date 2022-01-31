@@ -216,6 +216,19 @@ class Rattlesnake implements Animal {
        (* (first list)
           (list-product (rest list)))))))
 
+#;(define list-xxx
+  (lambda (list)
+    (cond
+      ((empty? list) ...)
+      ((cons? list)
+       ...
+       (first list)
+       (list-xxx (rest list))
+       ...))))
+
+; can do the job of any function written using the template
+; list-fold really is derived systematically from the data definition
+; ... -> study of folds
 
 (define list-fold
   (lambda (n op list)
