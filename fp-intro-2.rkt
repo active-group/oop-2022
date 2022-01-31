@@ -159,9 +159,10 @@ class Rattlesnake implements Animal {
 ;                                                     ^^^^ self-reference
 
 ; self-reference: key to creating flexible data structure, flexible domain models
-(define list-of-numbers
-  (signature (mixed empty-list
-                    cons-list)))
+(define list-of
+  (lambda (element)
+    (signature (mixed empty-list
+                      (cons-list-of element)))))
 
 ; A empty list ...
 (define-record empty-list
@@ -173,10 +174,10 @@ class Rattlesnake implements Animal {
 ; A cons list consists of:
 ; - first element
 ; - rest list
-(define-record cons-list
+(define-record (cons-list-of element)
   cons
   cons?
-  (first number)
+  (first element)
   (rest list-of-numbers))
 
 ; 1-element list: 7
