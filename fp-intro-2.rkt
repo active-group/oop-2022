@@ -71,3 +71,7 @@ class Dillo {
                   (else (dillo-weight dillo)))))) ; dead
 
 
+; A parrot has the following properties:
+; - sentence
+; - weight
+(define-record 
