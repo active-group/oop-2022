@@ -74,4 +74,20 @@ class Dillo {
 ; A parrot has the following properties:
 ; - sentence
 ; - weight
-(define-record 
+(define-record parrot
+  make-parrot
+  (parrot-sentence string)
+  (parrot-weight number))
+
+(define parrot1 (make-parrot "Hello!" 1))
+(define parrot2 (make-parrot "Goodbye!" 2))
+
+; run over an parrot
+(: run-over-parrot (parrot -> parrot))
+
+(check-expect (run-over-parrot parrot1)
+              (make-parrot "" 1))
+
+(define run-over-parrot
+  (lambda (parrot)
+    (make-parrot "" (parrot-weight parrot))))
