@@ -1,7 +1,10 @@
 ;; Die ersten drei Zeilen dieser Datei wurden von DrRacket eingefügt. Sie enthalten Metadaten
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
 #reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname fp-intro-2) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
-; Animals on the Texas highway
+; Animals on the Texas highway is one of the following:
+; - armadillo - OR -
+; - parrot
+; case analysis, NOT enumeration, full data definition for each case
 
 ; Armadillo has the following properties: <- compound data
 ; - alive or dead
