@@ -109,12 +109,37 @@ class C {
 ; - hour - AND -
 ; - minute
 ; compound data
+(define hour (signature (integer-from-to 0 23)))
+(define minute (signature (integer-from-to 0 59)))
+
 (define-record time
   make-time ; constructor
-  (time-hour (integer-from-to 0 23))
-  (time-minute (integer-from-to 0 59)))
+  (time-hour hour) ; "getter function", "selector"
+  (time-minute minute))
 
-(: make-time ((integer-from-to 0 23) (integer-from-to 0 59) -> time))
+(: make-time (hour minute -> time))
+(: time-hour (time -> hour))
+(: time-minute (time -> minute))
 
-
+; 12:24
 (define time1 (make-time 12 24))
+; 14:27
+(define time2 (make-time 14 27))
+
+; How many minutes since midnight?
+(: msm (time -> natural))
+
+(check-expect (msm time1)
+              744)
+
+; template
+#;(define msm
+  (lambda (time)
+    ... (time-hour time) ... (time-minute time) ...))
+
+(define msm
+  (lambda (time)
+    (+ (* 60 (time-hour time))
+       (time-minute time))))
+
+; write a function that takes minutes since midnight and produces a time record
