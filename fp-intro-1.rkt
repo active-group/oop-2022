@@ -1,6 +1,7 @@
 ;; Die ersten drei Zeilen dieser Datei wurden von DrRacket eingefügt. Sie enthalten Metadaten
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
 #reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname fp-intro-1) (read-case-sensitive #f) (teachpacks ((lib "image.rkt" "teachpack" "deinprogramm" "sdp"))) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ((lib "image.rkt" "teachpack" "deinprogramm" "sdp")))))
+; Language -> Choose Language -> "Schreibe Dein Programm - Anfänger" (NOT: "Beginner")
 ; If you don't see image.rkt:
 ; Go to Language -> Add Teachpack -> image.rkt -> OK
 (define x
@@ -27,4 +28,20 @@
      (beside image1 image2)
      (beside image2 image1))))
 
-(tile star1 square1)
+;(tile star1 square1)
+
+#|
+class C {
+  static int m(int x) {
+    // x does not stand for a number!
+    // x stands for a memory cell, which contains a number
+    ... 27 ...
+    x = x + 1;
+    ... 27 ...
+  }
+
+  C.m(27) ... could we replace x by 27 in the body of m?
+}
+
+
+|#
