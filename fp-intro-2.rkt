@@ -121,3 +121,30 @@ class Dillo {
     (cond
       ((dillo? animal) (run-over-dillo animal))
       ((parrot? animal) (run-over-parrot animal)))))
+
+; FP: more cases in mixed data => function definitions change
+; OOP: more cases in mixed data => just add class
+
+; FP: more operations => just add functions
+; OOP: change interface and all classes
+
+; "expression problem": make both cheap
+
+#|
+interface Animal {
+   Animal runOver();
+   Animal feed(double amount); <--
+}
+
+class Dillo implements Animal {
+  @Override Animal runOver() { ... }
+}
+
+class Parrot implements Animal {
+  @Override Animal runOver() { ... }
+}
+
+class Rattlesnake implements Animal {
+...
+}
+|#
